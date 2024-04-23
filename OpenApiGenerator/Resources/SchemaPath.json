@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Paths": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "PathKey": {
+              "type": "string"
+            },
+            "Method": {
+              "type": "string"
+            },
+            "Description": {
+              "type": "string"
+            },
+            "Responses": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "integer"
+                    },
+                    "Description": {
+                      "type": "string"
+                    },
+                    "MimeType": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Code",
+                    "Description",
+                    "MimeType"
+                  ]
+                }
+              ]
+            },
+            "Attributes": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "Name": {
+                      "type": "string"
+                    },
+                    "Type": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "string"
+                    },
+                    "Required": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Name",
+                    "Type",
+                    "Location"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "PathKey",
+            "Method",
+            "Responses"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "Paths"
+  ]
+}

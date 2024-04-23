@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "OutputFile": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string"
+    },
+    "Version": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "string"
+    },
+    "License": {
+      "type": "string"
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Name",
+        "Email"
+      ]
+    },
+    "Servers": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "Url": {
+              "type": "string"
+            },
+            "Description": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "Url"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "Title",
+    "Version",
+    "Description",
+    "License",
+    "Servers"
+  ]
+}

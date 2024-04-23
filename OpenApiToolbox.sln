@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApi Generator", "OpenApiGenerator\OpenApi Generator.csproj", "{4B2475F4-94D3-4B50-99E2-A8ED8643ACBA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Models and Enums", "Models and Enums\Models and Enums.shproj", "{0A0D423A-9EE3-4B9E-BD2E-125248AFA89A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{EBC7C016-7AF4-4BCE-B8CE-1EA254BFE8E5}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\openapi.json = Examples\openapi.json
+		Examples\pathInfo.json = Examples\pathInfo.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B2475F4-94D3-4B50-99E2-A8ED8643ACBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B2475F4-94D3-4B50-99E2-A8ED8643ACBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B2475F4-94D3-4B50-99E2-A8ED8643ACBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B2475F4-94D3-4B50-99E2-A8ED8643ACBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC423AEA-C40A-46FB-9071-4437052431E4}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Models and Enums\Models and Enums.projitems*{0a0d423a-9ee3-4b9e-bd2e-125248afa89a}*SharedItemsImports = 13
+		Models and Enums\Models and Enums.projitems*{4b2475f4-94d3-4b50-99e2-a8ed8643acba}*SharedItemsImports = 4
+	EndGlobalSection
+EndGlobal

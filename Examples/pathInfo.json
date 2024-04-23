@@ -1,0 +1,33 @@
+{
+  "Paths": [
+
+    {
+      "PathKey": "random",
+      "Method": "POST",
+      "Description": "Returns a random number",
+      "Responses": [
+
+        {
+          "Code": 200,
+          "Description": "The number as a JSON object",
+          "MimeType": "application/json"
+        }
+
+      ]
+      
+      ,
+      "Attributes": [
+        {
+          "Name": "max",
+          "Type": "integer",
+          "Location": "Query",
+          "Required": "true"  
+        }
+      ]
+      
+
+    }
+
+  ]
+
+}
