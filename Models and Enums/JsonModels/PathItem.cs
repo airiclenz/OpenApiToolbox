@@ -30,6 +30,8 @@ namespace Com.AiricLenz.OpenApi.JsonModel
 
         public List<Attribute> Attributes { get; set; }
 
+        public RequestBody RequestBody { get; set; }
+
     }
 
 }

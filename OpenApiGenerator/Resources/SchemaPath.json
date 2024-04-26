@@ -1,81 +1,124 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
   "type": "object",
   "properties": {
     "Paths": {
       "type": "array",
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "PathKey": {
-              "type": "string"
-            },
-            "Method": {
-              "type": "string"
-            },
-            "Description": {
-              "type": "string"
-            },
-            "Responses": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "Code": {
-                      "type": "integer"
-                    },
-                    "Description": {
-                      "type": "string"
-                    },
-                    "MimeType": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "Code",
-                    "Description",
-                    "MimeType"
-                  ]
+      "items": {
+        "type": "object",
+        "properties": {
+          "PathKey": {
+            "type": "string"
+          },
+          "Method": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Responses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Code": {
+                  "type": "number"
+                },
+                "Description": {
+                  "type": "string"
+                },
+                "ContentType": {
+                  "type": "string"
                 }
-              ]
-            },
-            "Attributes": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "Name": {
-                      "type": "string"
-                    },
-                    "Type": {
-                      "type": "string"
-                    },
-                    "Location": {
-                      "type": "string"
-                    },
-                    "Required": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "Name",
-                    "Type",
-                    "Location"
-                  ]
-                }
+              },
+              "required": [
+                "Code",
+                "Description",
+                "ContentType"
               ]
             }
           },
-          "required": [
-            "PathKey",
-            "Method",
-            "Responses"
-          ]
-        }
-      ]
+          "Attributes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "type": "string"
+                },
+                "Type": {
+                  "type": "string"
+                },
+                "Location": {
+                  "type": "string"
+                },
+                "Required": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "Name",
+                "Type",
+                "Location"
+              ]
+            }
+          },
+          "RequestBody": {
+            "type": "object",
+            "properties": {
+              "Description": {
+                "type": "string"
+              },
+              "ContentType": {
+                "type": "string"
+              },
+              "Required": {
+                "type": "boolean"
+              },
+              "Schema": {
+                "type": "object",
+                "properties": {
+                  "Type": {
+                    "type": "string"
+                  },
+                  "Properties": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Name": {
+                          "type": "string"
+                        },
+                        "Type": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "Name",
+                        "Type"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "Type",
+                  "Properties"
+                ]
+              }
+            },
+            "required": [
+              "ContentType",
+              "Schema"
+            ]
+          }
+        },
+        "required": [
+          "PathKey",
+          "Method",
+          "Responses"
+        ]
+      }
     }
   },
   "required": [

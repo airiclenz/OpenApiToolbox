@@ -10,10 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)jsonmodels\Attribute.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)JsonModels\Constact.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonModels\Contact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JsonModels\Document.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)jsonmodels\PathItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)jsonmodels\Property.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsonModels\RequestBody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)jsonmodels\Response.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)jsonmodels\Schema.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OpenApiPath.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JsonModels\Server.cs" />
   </ItemGroup>

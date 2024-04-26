@@ -10,11 +10,11 @@ namespace Com.AiricLenz.OpenApi.JsonModel
     // ============================================================================
     // ============================================================================
     // ============================================================================
-    internal class Response
+    internal class Schema
     {
-        public int Code;
-        public string ContentType;
-        public string Description;
-    }
 
+        public string Type { get; set; }
+        public List<Property> Properties { get; set; }
+
+    }
 }

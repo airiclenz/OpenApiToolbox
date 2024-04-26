@@ -1,4 +1,5 @@
 {
+  
   "Paths": [
 
     {
@@ -10,24 +11,36 @@
         {
           "Code": 200,
           "Description": "The number as a JSON object",
-          "MimeType": "application/json"
+          "ContentType": "application/json"
         }
 
-      ]
-      
-      ,
+      ],
+
+      /*
       "Attributes": [
         {
           "Name": "max",
           "Type": "integer",
           "Location": "Query",
-          "Required": "true"  
+          "Required": true
         }
-      ]
-      
+      ],
+      */
 
+      "RequestBody": {
+        //"Description": "The description of the request body",
+        //"Required": true,
+        "ContentType": "application/json",
+        "Schema": {
+          "Type": "Object",
+          "Properties": [
+            {
+              "Name": "maximum",
+              "Type": "integer"
+            }
+          ]
+        }
+      }
     }
-
   ]
-
 }

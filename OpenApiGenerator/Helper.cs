@@ -11,6 +11,8 @@ using System.Xml.Linq;
 using System.Runtime.Remoting.Messaging;
 using System;
 using System.Reflection;
+using Com.AiricLenz.OpenApi.JsonModel;
+using System.Runtime.InteropServices;
 
 
 // ============================================================================
@@ -370,46 +372,17 @@ namespace Com.AiricLenz.OpenApi
                     Description = item.Description
                 };
 
-                foreach (var response in item.Responses)
-                {
+                AddResponses(
+                    ref operation,
+                    item);
 
-                    operation.Responses.Add(
-                        response.Code.ToString(),
-                        new OpenApiResponse
-                        {
-                            Description = response.Description,
-                            Content = new Dictionary<string, OpenApiMediaType>
-                            {
-                                {
-                                    response.MimeType,
-                                    new OpenApiMediaType()
-                                }
-                            }
-                        }
-                    );
-                }
+                AddAttributes(
+                    ref operation,
+                    item);
 
-
-                if (item.Attributes != null)
-                {
-                    foreach (var attribute in item.Attributes)
-                    {
-
-                        operation.Parameters.Add(
-                            new OpenApiParameter
-                            {
-                                Name = attribute.Name,
-                                Schema = new OpenApiSchema
-                                {
-                                    Type = attribute.Type
-                                },
-                                In = GetParameterLocation(attribute.Location),
-                                AllowEmptyValue = !attribute.IsRequired,
-                            }
-                            );
-                    }
-                }
-
+                AddRequestBody(
+                    ref operation,
+                    item);
 
                 newPath.OpenApiPathItem.Operations.Add(
                     GetOperationType(item.Method),
@@ -422,6 +395,101 @@ namespace Com.AiricLenz.OpenApi
             return resultList;
         }
 
+
+
+        // ============================================================================
+        private void AddResponses(
+            ref OpenApiOperation operation,
+            PathItem item)
+        {
+            foreach (var response in item.Responses)
+            {
+                operation.Responses.Add(
+                    response.Code.ToString(),
+                    new OpenApiResponse
+                    {
+                        Description = response.Description,
+                        Content = new Dictionary<string, OpenApiMediaType>
+                        {
+                                {
+                                    response.ContentType,
+                                    new OpenApiMediaType()
+                                }
+                        }
+                    }
+                );
+            }
+        }
+
+
+        // ============================================================================
+        private void AddAttributes(
+            ref OpenApiOperation operation,
+            PathItem item)
+        {
+            if (item.Attributes == null)
+            {
+                return;
+            }
+
+            foreach (var attribute in item.Attributes)
+            {
+                operation.Parameters.Add(
+                    new OpenApiParameter
+                    {
+                        Name = attribute.Name,
+                        Schema = new OpenApiSchema
+                        {
+                            Type = attribute.Type
+                        },
+                        In = GetParameterLocation(attribute.Location),
+                        AllowEmptyValue = !attribute.IsRequired,
+                    }
+                    );
+            }
+        }
+
+
+        // ============================================================================
+        private void AddRequestBody(
+            ref OpenApiOperation operation,
+            PathItem item)
+        {
+            if (item.RequestBody == null)
+            {
+                return;
+            }
+
+            operation.RequestBody = new OpenApiRequestBody
+            {
+                Description = item.RequestBody.Description,
+                Content = new Dictionary<string, OpenApiMediaType>(),
+                Required = item.RequestBody.IsRequired
+            };
+
+            var mediaType = new OpenApiMediaType
+            {
+                Schema = new OpenApiSchema
+                {
+                    Type = item.RequestBody.Schema.Type.ToLower(),
+                    Properties = new Dictionary<string, OpenApiSchema>()
+                }
+            };
+            
+            foreach (var property in item.RequestBody.Schema.Properties)
+            {
+                mediaType.Schema.Properties.Add(
+                    new KeyValuePair<string, OpenApiSchema>(
+                        property.Name,
+                        new OpenApiSchema() { Type = property.Type }
+                    )
+                );
+            }
+
+            operation.RequestBody.Content.Add(
+                item.RequestBody.ContentType, 
+                mediaType);
+        }
 
 
 

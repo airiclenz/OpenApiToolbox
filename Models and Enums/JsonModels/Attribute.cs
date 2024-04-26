@@ -14,9 +14,10 @@ namespace Com.AiricLenz.OpenApi.JsonModel
 
         public string Name { get; set; }
         public string Type { get; set; }
+        public string Location { get; set; }
         public bool IsRequired { get; set; }
 
-        public string Location { get; set; }
+        
 
 
     }
